@@ -30,7 +30,15 @@ ans4 = sym.Integral(sym.sqrt(1/x), x)
 # pretty-print
 sym.printing.pprint(ans2, ans3)
 
+
 #* import every object from SymPy
 from sympy import *
 printing.pprint(ans4)
- 
+
+
+#* creating matrices in SymPy
+from sympy.printing import pprint
+from sympy.matrices import Matrix
+I = Matrix([[1,0,0],[0,1,0], [0,0,1]])
+pprint(2*I)
+pprint(eye(3))
