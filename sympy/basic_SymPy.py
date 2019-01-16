@@ -5,12 +5,12 @@ Author:     wur
 """
 
 import sympy as sym
-#from sympy import symbols 
+#sym.init_printing()
 
 a=sym.sqrt(3)
 print(a)
 
-#* in SymPym, variables are defined using symbols
+#* in SymPy, variables are defined using symbols
 x, y = sym.symbols('x, y')
 ans1 = x + 2*y
 print(ans1, "\n")
@@ -23,3 +23,14 @@ from sympy import expand, factor
 ans2 = expand(x*ans1)
 print(ans2)
 print(factor(ans2))
+
+ans3 = sym.diff(sym.sin(x)*sym.exp(x), x)
+ans4 = sym.Integral(sym.sqrt(1/x), x)
+
+# pretty-print
+sym.printing.pprint(ans2, ans3)
+
+#* import every object from SymPy
+from sympy import *
+printing.pprint(ans4)
+ 
