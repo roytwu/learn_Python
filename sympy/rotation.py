@@ -20,7 +20,37 @@ Rz = Matrix([ [cos(ga), -sin(ga), 0], [sin(ga), cos(ga), 0], [0,0,1] ])
 #pprint(Rx)
 
 #* use simplify() to get simplest form of an expression
-pprint(simplify(Rx*Rx.T))
+pprint(Rx*Rx.T) 
+pprint(simplify(Rx*Rx.T)) 
+
+
+#* matrix transpose 
+bool = ( Rx.T == Rx.transpose() )
+print(bool, "\n")
+
+
+#* matrix inverse
+#bool = ( simplify(Ry.inv("LU")) == Ry.T )
+bool = ( simplify(Ry.inv()) == Ry.T )
+print(bool, "\n")
+"""
+By default, inv() is computed by Gaussian elimintion, 
+use inv("LU") to specify to use LU decomposition
+"""
+
+#* matrix determinant
+pprint( simplify(Rz.det()) )
+print("\n")
+
+
+#* eigenvalues and eigenvectors
+#a=Rz.eigenvects()[1]
+#b=Rz.eigenvals().keys()
+#[Vec,D] = Rz.diagonalize()
+#pprint(Vec)
+#print( sqrt(Vec[0,1]**2 + Vec[1,1]**2 + Vec[2,1]**2) )
+#print(simplify(Vec[0,1]*Vec[0,1]))
+
 
 bRg = Rx*Rz*Ry
 #pprint(bRg)
