@@ -1,8 +1,8 @@
 """
-File name:   rottion.py
+File name:   rotation.py
 Date:        Created on Wed Jan 16 16:36:31 2019
 Author:      wur
-Description: symbolic computations for rattion matrices
+Description: symbolic computations for rotation matrices
 """
 #import mpmath
 import sympy as sym
@@ -10,6 +10,7 @@ from sympy          import symbols
 from sympy          import sin, cos, tan, cot
 from sympy.printing import pprint
 from sympy.matrices import Matrix
+from sympy          import simplify as simp
 
 psi, phi, theta = symbols("psi phi theta")
 al, be, ga      = symbols("alpha beta gamma")
@@ -30,8 +31,8 @@ print(bool, "\n")
 
 
 #* matrix inverse
-#bool = ( simplify(Ry.inv("LU")) == Ry.T )
-bool = ( simplify(Ry.inv()) == Ry.T )
+#bool = ( simp(Ry.inv("LU")) == Ry.T )
+bool = ( simp(Ry.inv()) == Ry.T )
 print(bool, "\n")
 """
 By default, inv() is computed by Gaussian elimintion, 
@@ -39,7 +40,7 @@ use inv("LU") to specify to use LU decomposition
 """
 
 #* matrix determinant
-pprint( simplify(Rz.det()) )
+pprint( simp(Rz.det()) )
 print("\n")
 
 
@@ -49,10 +50,10 @@ print("\n")
 #[Vec,D] = Rz.diagonalize()
 #pprint(Vec)
 #print( sqrt(Vec[0,1]**2 + Vec[1,1]**2 + Vec[2,1]**2) )
-#print(simplify(Vec[0,1]*Vec[0,1]))
+#print(simp(Vec[0,1]*Vec[0,1]))
 
 
 bRg = Rx*Rz*Ry
-#pprint(bRg)
+pprint(simp(bRg))
 
 

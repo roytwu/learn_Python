@@ -2,7 +2,7 @@
 File name:   attitude.py
 Date:        Created on Thur Jan 17 2019
 Author:      wur
-Description: symbolic computations for rotation matrices
+Description: symbolic computations for Euler angles
 """
 
 from sympy          import symbols
@@ -21,11 +21,12 @@ Ry = Matrix([ [cos(be), 0, sin(be)], [0,1,0], [-sin(be), 0, cos(be)] ])
 Rz = Matrix([ [cos(ga), -sin(ga), 0], [sin(ga), cos(ga), 0], [0,0,1] ])
 
 
-bRg = Rx*Ry*Rz #Euler angle
+bRg = Rx*Ry*Rz #Rotation matrix (Euler angle)
 aE = Matrix([ [0], [0], [-g]  ])  #gravitational acceleration in global frame
 a = bRg*aE  #gravitational accerlation in body fixed frame
 pprint(simp(a))
 
+#result
 al = atan2(-ay,az)
 be = asin(-ax/g)
  
