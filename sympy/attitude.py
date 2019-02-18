@@ -52,3 +52,8 @@ print("---------\n")
 #* see _note_CGM for details
 a2 = (bRg2).T * aE  
 pprint(simp(a2))
+
+#* ywa from magnetometer
+Ryx= simp(Ryy*Rxx)
+Rbm = Matrix([ [1,0,0], [0, -1, 0], [0, 0, -1] ])
+pprint(simp(Ryx*Rbm));
