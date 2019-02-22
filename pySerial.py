@@ -10,7 +10,7 @@ if ser.isOpen():
     
 ser.reset_input_buffer()
 
-line = ser.readline()
+line = ser.read()
 print(line)
 
 
