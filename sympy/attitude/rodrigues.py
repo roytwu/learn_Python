@@ -20,7 +20,7 @@ x, y, z      = symbols("x y z")
 a1, a2, a3   = symbols("a1 a2 a3")
 
 
-#* ===== Rodrigues Formula =====
+#* ----- Rodrigues Formula -----
 a = (a1, a2, a3)
 a_hat = SO3.hat(a)
 
@@ -28,12 +28,33 @@ a_hat = SO3.hat(a)
 #* compare them and print out the result
 Rod1 = cos(th)*eye3 + (1-cos(th))*(a_hat*a_hat+eye3) + sin(th)*a_hat
 Rod2 = eye3 + sin(th)*a_hat + (1-cos(th))*a_hat*a_hat
-
 result = simp(Rod1-Rod2)
-pprint(result)
-
-pprint(simp(Rod2))
+#pprint(result)
 
 
-#* 
-xx = (x, 0, 0) 
+#* ----- OpenGL glRotate ----- 
+glRot1 = SO3.glRotate(th, a)
+
+#* verifies that glRotate is angle-axis rotation
+res = simp(glRot1 -Rod2)
+#pprint(res)
+
+#* ----- rotation along basic axes -----
+xx = (1, 0, 0)
+yy = (0, 1, 0)
+zz = (0, 0, 1)
+glRot_x = SO3.glRotate(th, xx)
+rod_x   = SO3.rodrigues(th, xx)
+rot_x   = SO3.Rx(th)
+
+pprint(glRot_x)
+pprint(rod_x)
+pprint(rot_x)
+
+
+
+
+
+
+
+
