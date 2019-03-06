@@ -58,7 +58,7 @@ def main():
                 pygame.quit()
                 break
 
-        glRotatef(1.0, 3, 1, 1)
+        glRotatef(1.0, 1, 3, 1)
         #glRotatef(1.5, 1, 0, 0)
         
         #* clear buffers to preset value

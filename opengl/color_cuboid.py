@@ -40,13 +40,14 @@ tup_colors = (
     (0, 1, 0), 
     (0, 0, 1), 
     (0, 0, 1),
-    (1,0,0),
-    (0,1,0),
-    (0,0,1),
-    (1,0,0),
-    (1,1,1),
-    (0,1,1),       
+    (1, 0, 0),
+    (0, 1, 0),
+    (0, 0, 1),
+    (1, 0, 0),
+    (1, 1, 1),
+    (0, 1, 1),       
 )
+
 
 tup_surfaces = (
     (4, 5, 6, 7),  #* front
@@ -60,12 +61,12 @@ tup_surfaces = (
 
 def Cuboid_draw():
     glBegin(GL_QUADS)
-    for surf in tup_surfaces:
-        x = 0
+    for surf in tup_surfaces:        
+        x = 0    
         for ver in surf:
-            x+=1
             glColor3fv(tup_colors[x])
             glVertex3fv(tup_vertices[ver])
+            x+=1
     glEnd()        
     
     glBegin(GL_LINES)
@@ -91,7 +92,7 @@ def main():
                 pygame.quit()
                 break
 
-        glRotatef(1.0, 3, 1, 1)
+        glRotatef(1.0, 1, 3, 1)
         #glRotatef(1.5, 1, 0, 0)
         
         #* clear buffers to preset value
