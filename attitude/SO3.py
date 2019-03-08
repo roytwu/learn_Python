@@ -11,8 +11,25 @@ from sympy.matrices import Matrix
 #from sympy.printing import pprint
 #from sympy          import simplify as simp
 
-
 eye3 = Matrix([ [1,0,0], [0, 1, 0], [0, 0, 1] ])
+
+#* ----- hat map -----
+def hat(tup_v):
+    v1 = tup_v[0]   #* axis-x
+    v2 = tup_v[1]   #* axis-y
+    v3 = tup_v[2]   #* axis-z
+    hatMap = Matrix([ [0,-v3, v2], [v3, 0, -v1], [-v2, v1, 0] ])   
+    return hatMap 
+
+
+#* ----- vee map -----
+def vee(skewMatx):
+    v1 = skewMatx[2, 1] #*accessing matrix element
+    v2 = skewMatx[0, 2]
+    v3 = skewMatx[1, 0]
+    tup_v = (v1, v2, v3)
+    return tup_v
+
 
 #* ----- basic rotations -----
 #G^R_B along x axis
@@ -36,15 +53,9 @@ def Rz(psi):
                   [0,0,1] ])
     return rz
 
-#* ----- hat map -----
-def hat(tup_v):
-    v1 = tup_v[0]   #* axis-x
-    v2 = tup_v[1]   #* axis-y
-    v3 = tup_v[2]   #* axis-z
-    hatMap = Matrix([ [0,-v3, v2], [v3, 0, -v1], [-v2, v1, 0] ])   
-    return hatMap 
 
 #* ----- glRotate in OpenGL -----
+#* glRotate definition: https://www.cs.sfu.ca/~haoz/teaching/htmlman/rotate.html
 def glRotate(ang, tup_v3):
     a1 = tup_v3[0]  #* axis-x
     a2 = tup_v3[1]  #* axis-y
@@ -57,13 +68,19 @@ def glRotate(ang, tup_v3):
          ])
     return rotate
 
+
 #* ----- Rodrigues formula -----
 def rodrigues(angle, tup_v3):
     v3_hat = hat(tup_v3)
     rod = eye3 + sin(angle)*v3_hat + (1-cos(angle))*v3_hat*v3_hat
     return rod
     
-    
+
+#* ----- Unit Quaternion ----- 
+def unitQaut(q0, tup_q):
+    q_hat = hat(tup_q)
+    rot = eye3 + 2*q_hat*q_hat +2*q0*q_hat
+    return rot
     
     
     

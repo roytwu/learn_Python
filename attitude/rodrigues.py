@@ -10,20 +10,24 @@ from sympy.printing import pprint
 from sympy.matrices import Matrix
 from sympy          import simplify as simp
 
-
 import SO3  #* use custom module
 eye3 = SO3.eye3
-
 
 th, phi, psi = symbols("theta phi psi")
 x, y, z      = symbols("x y z")
 a1, a2, a3   = symbols("a1 a2 a3")
 
 
-#* ----- Rodrigues Formula -----
+#* testing hat and vee map
 a = (a1, a2, a3)
 a_hat = SO3.hat(a)
+aa = SO3.vee(a_hat)
+pprint(a_hat)
+pprint(aa)
+print('\n')       
 
+
+#* ----- Rodrigues Formula -----
 #* both Rod1 and Rod2 are Rodrigues formula in different form 
 #* compare them and print out the result
 Rod1 = cos(th)*eye3 + (1-cos(th))*(a_hat*a_hat+eye3) + sin(th)*a_hat
