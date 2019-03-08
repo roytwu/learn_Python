@@ -1,7 +1,8 @@
 """
-File name:   quat.py
+File name:   main_quat.py
 Developer:   wur
-Description: Quaterinion operations
+Description: Symbolic computations to test funcitons of mapping between 
+             SO(3) and S(3) 
 """
 from sympy          import symbols
 from sympy          import sin, cos, tan, cot
@@ -20,12 +21,12 @@ yy = (0, 1, 0)
 zz = (0, 0, 1)
 
 
-rot_x   = SO3.Rx(th)  #*creating rotation matrix
-pprint(rot_x)
+rot   = SO3.Rx(th)  #*creating rotation matrix
+pprint(rot)
 
 #* map SO(3) to S(3)
-quat_x = SO3.SO3ToUnitQuat(rot_x)
-print(quat_x)
+quat = SO3.SO3ToUnitQuat(rot)
+print(quat)
 
-result = SO3.unitQuatToSO3(quat_x)
-pprint(simp(result))
+rot_2 = SO3.unitQuatToSO3(quat)
+pprint(simp(rot_2))

@@ -1,7 +1,8 @@
 """
 Developer:   Roy TWu
 File Name:   SO3.py
-Description: custom modules about attitude representation and transformation
+Description: Custom module about attitude representation and transformation
+             This module aslo consists useful tools such as hat and vee map
 """
 import sympy
 from sympy          import symbols
@@ -36,7 +37,7 @@ def trace(Matx):
    return result
 
 
-#* ----- basic rotations -----
+#* ----- basic rotations of SO(3) -----
 #G^R_B along x axis
 def Rx(th):  
     rx = Matrix([ [1,0,0], 

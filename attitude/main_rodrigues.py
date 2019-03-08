@@ -1,7 +1,8 @@
 """
-File name:   rodrigues.py
+File name:   main_rodrigues.py
 Developer:   wur
-Description: symbolic computations for Rodrigues formula
+Description: Symbolic computations to test funcitons of mapping between 
+             SO(3) and Redrigues formula
 """
 from sympy          import symbols
 from sympy          import sin, cos, tan, cot
