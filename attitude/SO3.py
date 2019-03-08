@@ -3,7 +3,7 @@ Developer:   Roy TWu
 File Name:   SO3.py
 Description: custom modules about attitude representation and transformation
 """
-
+import sympy
 from sympy          import symbols
 from sympy          import sin, cos, tan, cot
 from sympy          import asin, acos, atan, atan2
@@ -27,8 +27,13 @@ def vee(skewMatx):
     v1 = skewMatx[2, 1] #*accessing matrix element
     v2 = skewMatx[0, 2]
     v3 = skewMatx[1, 0]
-    tup_v = (v1, v2, v3)
-    return tup_v
+    return (v1, v2, v3)
+
+
+#* ----- trace -----
+def trace(Matx):  
+   result = Matx[0,0] + Matx[1,1] + Matx[2,2] 
+   return result
 
 
 #* ----- basic rotations -----
@@ -56,7 +61,7 @@ def Rz(psi):
 
 #* ----- glRotate in OpenGL -----
 #* glRotate definition: https://www.cs.sfu.ca/~haoz/teaching/htmlman/rotate.html
-def glRotate(ang, tup_v3):
+def glRotateToSO3(ang, tup_v3):
     a1 = tup_v3[0]  #* axis-x
     a2 = tup_v3[1]  #* axis-y
     a3 = tup_v3[2]  #* axis-z
@@ -70,18 +75,28 @@ def glRotate(ang, tup_v3):
 
 
 #* ----- Rodrigues formula -----
-def rodrigues(angle, tup_v3):
+def rodriguesToSO3(angle, tup_v3):
     v3_hat = hat(tup_v3)
     rod = eye3 + sin(angle)*v3_hat + (1-cos(angle))*v3_hat*v3_hat
     return rod
     
 
 #* ----- Unit Quaternion ----- 
-def unitQaut(q0, tup_q):
+def unitQuatToSO3(uQuat):
+    q0 = uQuat[0]
+    tup_q = (uQuat[1], uQuat[2], uQuat[3])
+    
     q_hat = hat(tup_q)
     rot = eye3 + 2*q_hat*q_hat +2*q0*q_hat
     return rot
     
     
-    
+def SO3ToUnitQuat(Matx):
+    tr =trace(Matx)
+    q0 = ( sympy.sqrt(tr+1) )/2
+    q1 = vee(Matx -Matx.T)[0]/(4*q0)
+    q2 = vee(Matx -Matx.T)[1]/(4*q0)
+    q3 = vee(Matx -Matx.T)[2]/(4*q0)
+    quat = (q0, q1, q2, q3)
+    return quat    
     

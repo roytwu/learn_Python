@@ -37,7 +37,7 @@ result = simp(Rod1-Rod2)
 
 
 #* ----- OpenGL glRotate ----- 
-glRot1 = SO3.glRotate(th, a)
+glRot1 = SO3.glRotateToSO3(th, a)
 
 #* verifies that glRotate is angle-axis rotation
 res = simp(glRot1 -Rod2)
@@ -47,8 +47,8 @@ res = simp(glRot1 -Rod2)
 xx = (1, 0, 0)
 yy = (0, 1, 0)
 zz = (0, 0, 1)
-glRot_x = SO3.glRotate(th, xx)
-rod_x   = SO3.rodrigues(th, xx)
+glRot_x = SO3.glRotateToSO3(th, xx)
+rod_x   = SO3.rodriguesToSO3(th, xx)
 rot_x   = SO3.Rx(th)
 
 pprint(glRot_x)
