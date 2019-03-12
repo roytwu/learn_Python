@@ -1,5 +1,5 @@
 """
-File name:   main_quat.py
+File name:   _quat.py
 Developer:   wur
 Description: Symbolic computations to test funcitons of mapping between 
              SO(3) and S(3) 
@@ -15,18 +15,30 @@ th, phi, psi = symbols("theta phi psi")
 
 #* use custom module
 import SO3  
+import S3
 
 xx = (1, 0, 0)
 yy = (0, 1, 0)
 zz = (0, 0, 1)
 
-
-rot   = SO3.Rx(th)  #*creating rotation matrix
-pprint(rot)
-
+#* creating random rotation matrix
+rotA = SO3.Rx(1.0)* SO3.Ry(1.0) 
+rotB = SO3.Rz(1.0)
+pprint(rotA)
+c
 #* map SO(3) to S(3)
-quat = SO3.SO3ToUnitQuat(rot)
-print(quat)
+quatA = SO3.SO3ToUnitQuat(rotA)
+quatB = SO3.SO3ToUnitQuat(rotB)
+print(quatA)
 
-rot_2 = SO3.unitQuatToSO3(quat)
-pprint(simp(rot_2))
+rotA2 = SO3.unitQuatToSO3(quatA)
+pprint(simp(rotA2))
+
+#* ----- testing quaternion multiplication -----
+rotC = rotA*rotB                        #* multiplication of SO(3)
+quatC = S3.multiplication(quatA, quatB) #* multiplication of S(3)
+rotCC = SO3.unitQuatToSO3(quatC)
+
+print('\nShall obtain the same result... \n')
+pprint(rotCC)
+pprint(rotC)

@@ -1,5 +1,5 @@
 """
-File name:   main_rodrigues.py
+File name:   _rodrigues.py
 Developer:   wur
 Description: Symbolic computations to test funcitons of mapping between 
              SO(3) and Redrigues formula
