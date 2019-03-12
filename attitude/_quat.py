@@ -25,7 +25,7 @@ zz = (0, 0, 1)
 rotA = SO3.Rx(1.0)* SO3.Ry(1.0) 
 rotB = SO3.Rz(1.0)
 pprint(rotA)
-c
+
 #* map SO(3) to S(3)
 quatA = SO3.SO3ToUnitQuat(rotA)
 quatB = SO3.SO3ToUnitQuat(rotB)
@@ -34,11 +34,12 @@ print(quatA)
 rotA2 = SO3.unitQuatToSO3(quatA)
 pprint(simp(rotA2))
 
+
 #* ----- testing quaternion multiplication -----
 rotC = rotA*rotB                        #* multiplication of SO(3)
 quatC = S3.multiplication(quatA, quatB) #* multiplication of S(3)
 rotCC = SO3.unitQuatToSO3(quatC)
 
-print('\nShall obtain the same result... \n')
-pprint(rotCC)
-pprint(rotC)
+print('\nShall obtain identity matrix... \n')
+result = rotCC* rotC.T 
+pprint(result)
