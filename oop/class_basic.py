@@ -5,29 +5,39 @@ Author:      wur
 Description: basic concepts about Python class
 """
 #* -----clss sample #1-----
-class ClassRoy:
-  #* A sample example class
-  i = 12345
+class ClassToto:
+  i = 12345  #* class attribute, shared by all instances
   
-  def hello(self):
+  def func_hello(self):
     return 'hello world!' 
 
 #* create a new instance of the class and assigns this object to the local variable foo    
-foo = ClassRoy()
-foo.counter = 1
+o_foo = ClassToto()
+o_foo.counter = 1
 
-while foo.counter < 10:
-  foo.counter = foo.counter*2
+while o_foo.counter < 10:
+  o_foo.counter = o_foo.counter*2
 
 print('Shall print out 16...')
-print(foo.counter)
-del foo.counter #* delete counter  
+print(o_foo.counter)
+del o_foo.counter #* delete counter  
 
 
+print('\n--- Hello function in Class example #1 ---')
+print(o_foo.func_hello())
+
+
+result1=type(ClassToto.func_hello)
+result2=type(o_foo.func_hello)
+print('Type of "Class.method" is.. ', result1)
+print('Type of "object.method" is.. ', result2)
 print('\n')
-print(foo.hello())
+"""
+A method is a function that belongs to an object!
+"""
 
-bar = foo.hello #* create a method object
+
+bar = o_foo.func_hello #* create a method object
 i = 0
 while True: 
     print(bar())
@@ -37,7 +47,7 @@ while True:
         break
     
 #* -----clss sample #2----- 
-print('\n')        
+print('\n----- class example #2 -----')        
 class Dog:
     m_kind = 'canine' #* variable shared by all instances
     
