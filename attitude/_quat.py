@@ -4,9 +4,11 @@ Developer:   wur
 Description: Symbolic computations to test funcitons of mapping between 
              SO(3) and S(3) 
 """
+
 from sympy          import symbols
 from sympy          import sin, cos, tan, cot
 from sympy          import asin, acos, atan, atan2
+from sympy          import zeros
 from sympy.printing import pprint
 from sympy.matrices import Matrix
 from sympy          import simplify as simp
@@ -17,6 +19,18 @@ th, phi, psi = symbols("theta phi psi")
 import SO3  
 import S3
 
+#* round tiny doubles to zero
+def roundTinyDoubleToZero(Matx):
+    out = zeros(3)
+    for i in range(3):
+        for j in range(3):
+            if abs(Matx[i,j]) < 0.0000001:
+                out[i,j] = 0.0
+            else:
+                out[i,j] = Matx[i,j]
+    return out        
+
+#* ----- Main program starts here -----
 xx = (1, 0, 0)
 yy = (0, 1, 0)
 zz = (0, 0, 1)
@@ -42,4 +56,5 @@ rotCC = SO3.unitQuatToSO3(quatC)
 
 print('\nShall obtain identity matrix... \n')
 result = rotCC* rotC.T 
+result = roundTinyDoubleToZero(result)
 pprint(result)

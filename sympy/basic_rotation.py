@@ -15,6 +15,7 @@ from sympy          import simplify as simp
 psi, phi, theta = symbols("psi phi theta")
 al, be, ga      = symbols("alpha beta gamma")
 
+
 Rx = Matrix([ [1,0,0], [0, cos(al), -sin(al)], [0, sin(al), cos(al)] ])
 Ry = Matrix([ [cos(be), 0, sin(be)], [0,1,0], [-sin(be), 0, cos(be)] ])
 Rz = Matrix([ [cos(ga), -sin(ga), 0], [sin(ga), cos(ga), 0], [0,0,1] ])
@@ -22,7 +23,7 @@ Rz = Matrix([ [cos(ga), -sin(ga), 0], [sin(ga), cos(ga), 0], [0,0,1] ])
 
 #* use simplify() to get simplest form of an expression
 pprint(Rx*Rx.T) 
-pprint(simplify(Rx*Rx.T)) 
+pprint(simp(Rx*Rx.T)) 
 
 
 #* matrix transpose 
