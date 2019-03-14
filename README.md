@@ -4,12 +4,18 @@ This is a repo about Python programming.
 💾 Projects
 ------------
 
-## attitude
-Custom module **SO3.py** for attitude represntation and transformation
-- basic rotations: rotation along *x*, *y* and *z* axis in SO(3).
-- hat map: transfer a 3x1 vector to a 3x3 skew-symmetric matrix, which is very useful in describing rotational motion
-- glRotate: mimicing `glRotate()` function in OpenGL
-- Rodrigues formual: angle-axis rotation
+## attitude 
+Operations about SO(3) utilizing the following custom modules:  
+- **SO3.py** - attitude represntation and transformation
+  - `Rx()`, `Ry()`, `Rz()`: rotation along *x*, *y* and *z* axis in SO(3).
+  - `hat()`: Hat map, it transfers a 3x1 vector to a 3x3 skew-symmetric matrix, which is very useful in describing rotational motion
+  - `vee()`: Vee map: inverse of hat map
+  - `glRotate()`: mimicing `glRotate()` function in OpenGL
+  - `rodriguesToSO3()`: converting Rodrigues formula to rotation matrix
+  - `unitQuatToSO3()`: converting unit quaternion to rotation matrix
+  - `SO3ToUnitQuat()`: mapping rotation matrix to unit quaternion
+- **S3.py** 
+  - `multiplication()`: multiplication of 2 quaternions
 
 ## OOP
 Object-orientated programming in Python
