@@ -61,7 +61,8 @@ def Rz(psi):
 
 
 #* ----- glRotate in OpenGL -----
-#* glRotate definition: https://www.cs.sfu.ca/~haoz/teaching/htmlman/rotate.html
+#* glRotate definition: 
+#* https://www.cs.sfu.ca/~haoz/teaching/htmlman/rotate.html
 def glRotateToSO3(ang, tup_v3):
     a1 = tup_v3[0]  #* axis-x
     a2 = tup_v3[1]  #* axis-y

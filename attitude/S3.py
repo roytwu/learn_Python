@@ -4,6 +4,7 @@ File Name:   S3.py
 Description: Custom module about quaternion multiplication
 """
 
+
 #* multiplication of 2 quaternions
 def multiplication(p, q):
     p0 = p[0]

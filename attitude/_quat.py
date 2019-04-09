@@ -4,7 +4,9 @@ Developer:   wur
 Description: Symbolic computations to test funcitons of mapping between 
              SO(3) and S(3) 
 """
-
+import math
+import numpy as np
+from numpy.linalg   import norm
 from sympy          import symbols
 from sympy          import sin, cos, tan, cot
 from sympy          import asin, acos, atan, atan2
@@ -12,6 +14,7 @@ from sympy          import zeros
 from sympy.printing import pprint
 from sympy.matrices import Matrix
 from sympy          import simplify as simp
+
 
 th, phi, psi = symbols("theta phi psi")
 
@@ -37,13 +40,13 @@ zz = (0, 0, 1)
 
 #* creating random rotation matrix
 rotA = SO3.Rx(1.0)* SO3.Ry(1.0) 
-rotB = SO3.Rz(1.0)
-pprint(rotA)
+rotB = SO3.Rx(-math.pi/2.0)
+pprint(rotB)
 
 #* map SO(3) to S(3)
 quatA = SO3.SO3ToUnitQuat(rotA)
 quatB = SO3.SO3ToUnitQuat(rotB)
-print(quatA)
+print(quatB)
 
 rotA2 = SO3.unitQuatToSO3(quatA)
 pprint(simp(rotA2))
