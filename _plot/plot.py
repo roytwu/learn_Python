@@ -1,7 +1,7 @@
 """
 File name:   plot.py
-Developer:   wur
-Description: 
+Developer:   roy
+Description: read and plot (IMU velocity) date from text file
 """
 import math
 import numpy             as np
@@ -9,13 +9,14 @@ import matplotlib        as mpl
 import matplotlib.pyplot as plt
 
 print('\nProgram starts... \n')
-#* variable initialization
+
+#* --- variable initialization ---
 time, X, Y, Z = [], [], [], []  #* empty lists
 initTime = 0
 found = False
 
-#* iterate each line of the text file
-for line in open('velocityOutput_0.txt', 'r'):
+#* --- iterate each line of the text file ---
+for line in open('velocityOutput_2.txt', 'r'):
     values = [float(string) for string in line.split()]
      
     #* find out initial timestamp
@@ -31,9 +32,12 @@ for line in open('velocityOutput_0.txt', 'r'):
     Y.append(values[2])         #* y-axis
     Z.append(values[3])         #* z-axis
     
-
-plt.plot(time, X, '-b', label='velocity X-axis')
-plt.legend(loc='upper right')
-plt.savefig('velocityIMU.png', dpi=260)
-mpl.pyplot.show()
+#* --- plot figure ---
+plt.figure(figsize=(10, 4))                         #* setup figure size
+plt.plot(time, X, '-b', label='velocity X-axis')   #* plot!!!
+plt.legend(loc='upper right')                      #* setup label position
+plt.xlabel('sec', fontsize=12)
+plt.ylabel('m/s', fontsize=12)
+plt.savefig('velocityIMU_2.png', dpi=220, bbox_inches='tight') 
+#mpl.pyplot.show()
     
