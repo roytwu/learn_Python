@@ -3,6 +3,8 @@ This is a repo about Python programming.
 
 💾 Projects
 ------------
+## _plot
+Extracting data from a text file and then making plot for analysis utilizing `matplotlib`
 
 ## attitude 
 Operations about SO(3) utilizing the following custom modules:  
