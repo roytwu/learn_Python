@@ -22,6 +22,9 @@ Operations about SO(3) utilizing the following custom modules:
 ## OOP
 Object-orientated programming in Python
 
+## openCV
+Image processing such as sharpening, downSampling with Pytho OpenCV
+
 ## opengl
 Following [tutorial](https://bit.ly/2ENkI1Q) to learn about baisc OpenGL in Python. 
 
