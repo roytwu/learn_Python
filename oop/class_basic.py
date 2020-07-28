@@ -1,7 +1,5 @@
 """
-File name:   class_basic.py
-Date:        Feb 22 2019
-Author:      wur
+Author:      Roy Wu
 Description: basic concepts about Python class
 """
 #* -----clss sample #1-----
