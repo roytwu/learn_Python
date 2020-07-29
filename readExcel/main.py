@@ -28,8 +28,20 @@ print("Program starts here...")
 # outputList = row0.values.tolist()
 # print (outputList)
 
-#*  ----- -----
+#*  ----- group data by date -----
 data = pd.read_excel (r'678-ORCRB-all sub-DataDownload-1.xlsx', sheet_name='Original-DataDownload')
-gp1=data.groupby('Meter Reference')
-output = gp1.first()
+data.index = pd.to_datetime(data['Date'], format='%m/%d/%y')
+gp1=data.groupby(by=[data.index.month, data.index.year])
+#gp1=data.groupby(by=[data.index.month])
+
+output=gp1.sum()  #sum all entries in group, from beginning of the month to the end of the month
 output.to_excel("output.xlsx")
+# with pd.ExcelWriter('output.xlsx') as writer:  
+#     for row, group in gp1:
+#         group.to_excel(writer, sheet_name=row)
+
+
+
+# gp1=data.groupby('Meter Reference')
+# output = gp1.first() #* group all the 1ist entries to a data frame
+# output.to_excel("output.xlsx")
