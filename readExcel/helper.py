@@ -5,19 +5,30 @@ Description: helper functions
 import pandas as pd
 
 
-def sortByMeter(fileName, sheetName, meterRef, outputFileName):
+def sortByMeter(fileName, sheetName, meterRef, outputFileName, sumIn24hr, monthlySum):
     #* read Excel file
-    data = pd.read_excel (fileName, sheet_name=sheetName)
+    data = pd.read_excel (fileName+".xlsx", sheet_name=sheetName)
     
     #* indexing
     data.index = pd.to_datetime(data['Date'], format='%m/%d/%y')
-    gp1=data.groupby(by=['Meter Reference', data.index.year, data.index.month, data.index.day], sort=False)
-    output=gp1.sum()  #*sum all entries in group, from beginning of the month to the end of the month
+    
+    if monthlySum == True:
+        gp=data.groupby(by=['Meter Reference', data.index.year, data.index.month], sort=False)
+    elif monthlySum == False:
+        #* keep data daily
+        gp=data.groupby(by=['Meter Reference', data.index.year, data.index.month, data.index.day], sort=False)
+    else:
+        "Error: monthlySum must be Boolean"
+    
+    output=gp.sum()  #*sum all entries in group, from beginning of the month to the end of the month
     
     #* extract a particualr row
     output = output.loc[int(meterRef)]
     
-    print(list(output))
+    #* ----- ----- -----
+    #*   48->24, this is ugly, but it works
+    #* ----- ----- -----
+    # print(list(output))
     output['0-1'] = output[output.columns[2]] + output[output.columns[3]] 
     output['1-2'] = output[output.columns[4]] + output[output.columns[5]] 
     output['2-3'] = output[output.columns[6]] + output[output.columns[7]] 
@@ -47,7 +58,16 @@ def sortByMeter(fileName, sheetName, meterRef, outputFileName):
     output.drop(output.iloc[:, 1:50], axis = 1, inplace = True) 
     
     
-   
+    #* ---adding sum---
+    if sumIn24hr == True:
+        column_list = list(output)  #* list all the columns then kick out undesired ones 
+        # print(column_list)
+        column_list.remove('Meter Id')
+        output['sum'] = output[column_list].sum(axis=1) #* add column: sum
+        # output['daily average'] = out2['sum']/30        #* add column: daily average 
+
     
+
     #* output Excel file
-    output.to_excel(outputFileName+"_"+meterRef)
+    outFile = outputFileName+"_"+meterRef+".xlsx"
+    output.to_excel(outFile)
