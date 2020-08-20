@@ -27,17 +27,17 @@ N = 50  #* number of sample points
 T = 1   #* sample spacing 
 x = np.linspace(0.0, N*T, N)
 y = np.exp(-x)
-yf = fft(y) 
-xf = np.linspace(0.0, 1/(2.0*T), N//2)
-plt.plot(xf, 2.0/N*np.abs(yf[0:N//2]))
-plt.grid()
-plt.show()
+# yf = fft(y) 
+# xf = np.linspace(0.0, 1/(2.0*T), N//2)  
+# plt.plot(xf, 2.0/N*np.abs(yf[0:N//2]))
+# plt.grid()
+# plt.show()
 
-xf2 = np.linspace(0.0, 2, N)
-yf2 =1/(xf2+1)
-plt.plot(xf2,yf2) 
-plt.grid()
-plt.show()
+# xf2 = np.linspace(0.0, 2, N)
+# yf2 =1/(xf2+1)
+# plt.plot(xf2,yf2) 
+# plt.grid()
+# plt.show()
 
 
 
