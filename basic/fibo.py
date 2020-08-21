@@ -23,3 +23,7 @@ def fibonacci2(n):
 	else:
 		return fibonacci2(n-1) + fibonacci2(n-2)		
 
+
+
+ans=fibonacci(25)
+print(ans)
