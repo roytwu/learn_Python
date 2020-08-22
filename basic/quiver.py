@@ -6,8 +6,6 @@ import math
 import numpy             as np
 import matplotlib.pyplot as plt
 from numpy                import linalg
-from scipy.linalg         import expm, sinm, cosm
-from pprint               import pprint 
 from mpl_toolkits.mplot3d import Axes3D 
 
 fig = plt.figure()
@@ -16,11 +14,10 @@ ax = plt.axes(projection='3d')
 #*---------- ----------
 #*    3D vector plot  
 #*---------- ----------
-m1 =  np.array([[math.cos(0.3), 0., math.sin(0.3)], [0., 1., 0.], [-math.sin(0.3), 0., math.cos(0.3)]])
-m2 =  np.array([[math.cos(0.3), -math.sin(0.3), 0], [math.sin(0.3), math.cos(0.3), 0], [0., 0, 1]])
-
-x1=np.array([0, 1.5, 0])
-x2=np.array([3, 0, 0])
+m1 = np.array([[math.cos(0.3), 0, math.sin(0.3)], [0, 1, 0], [-math.sin(0.3), 0, math.cos(0.3)]])
+m2 = np.array([[math.cos(0.3), -math.sin(0.3), 0], [math.sin(0.3), math.cos(0.3), 0], [0, 0, 1]])
+x1 = np.array([0, 1.5, 0])
+x2 = np.array([3, 0, 0])
 
 y1= m1.dot(x1)
 y2= m2.dot(x2)
@@ -41,8 +38,6 @@ for th in rg:
   mtx = np.array([[math.cos(th), -math.sin(th), 0], [math.sin(th), math.cos(th), 0], [0., 0, 1]])
   y= mtx.dot(x2)
   ax.quiver(0, 0, 0, y[0], y[1], y[2])
-
-
 
 
 ax.set_xlim([-3, 3])

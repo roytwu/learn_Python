@@ -32,18 +32,25 @@ totoInv = linalg.inv(toto)
  
 output1 = toto.dot(totoInv)          #* AxB=A.dot(B) 
 output2 = np.matmul(toto, totoInv)   
-print("output1 is...", output1)
-print("output2 is...", output2)
-print("output is...", totoInv*toto)  #* element-wise multiplication
+# print("output1 is...", output1)
+# print("output2 is...", output2)
+# print("output is...", totoInv*toto)  #* element-wise multiplication
 
 totoT = toto.transpose()             #* matris transpose
-print("transpose is...", totoT)
+# print("transpose is...", totoT)
 
 
-tata = np.array([[math.cos(0.3), 0., math.sin(0.3)], [0., 1., 0.], [-math.sin(0.3), 0., math.cos(0.3)]])
-tataDet = linalg.det(tata)
-print(tataDet)
+tata = np.array([[math.cos(0.5), 0, math.sin(0.5)], [0, 1, 0], [-math.sin(0.5), 0, math.cos(0.5)]])
+tataDet = linalg.det(tata)  #* determinant
+lamb, v = linalg.eig(tata)
+print("eigenvalues are...", lamb)
+print("eigenvectors are...", v[0])
 
+I = np.array([[1, 0, 0], [0, 1, 0], [0, 0, 1]])
+dumm1 = np.dot(lamb[0], I)
+print("dumm1...", dumm1)
+output = np.matmul((tata-dumm1), v[:,0])
+print('output is...', output)
 
 
 #*---------- ----------
