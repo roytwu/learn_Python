@@ -14,8 +14,9 @@ ax = plt.axes(projection='3d')
 #*---------- ----------
 #*    3D vector plot  
 #*---------- ----------
-m1 = np.array([[math.cos(0.3), 0, math.sin(0.3)], [0, 1, 0], [-math.sin(0.3), 0, math.cos(0.3)]])
-m2 = np.array([[math.cos(0.3), -math.sin(0.3), 0], [math.sin(0.3), math.cos(0.3), 0], [0, 0, 1]])
+a = 0.5
+m1 = np.array([[math.cos(a), 0, math.sin(a)], [0, 1, 0], [-math.sin(a), 0, math.cos(a)]])
+m2 = np.array([[math.cos(a), -math.sin(a), 0], [math.sin(a), math.cos(a), 0], [0, 0, 1]])
 x1 = np.array([0, 1.5, 0])
 x2 = np.array([3, 0, 0])
 
@@ -24,13 +25,13 @@ y2= m2.dot(x2)
 print('y1 is....', y1)
 print('y2 is....', y2)
 
-# q1 = ax.quiver(0, 0, 0, x1[0], x1[1], x1[2])
-# q2 = ax.quiver(0, 0, 0, x2[0], x2[1], x2[2])
+# q1 = ax.quiver(0, 0, 0, x1[0], x1[1], x1[2]) #* draw vector x1
+# q2 = ax.quiver(0, 0, 0, x2[0], x2[1], x2[2]) #* draw vector x2
 # q3 = ax.quiver(0, 0, 0, y2[0], y2[1], y2[2])
 
 
 #*---------- ----------
-#*    3D vector plot  
+#*    3D vector plot  (rotaiton over 2pi)
 #*---------- ----------
 rg  = np.linspace(-np.pi, np.pi, 20)
 
