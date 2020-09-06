@@ -46,14 +46,27 @@ expr = sym.Eq(left, right)  #* ODE expression
 # pprint(expr)
 
 sol = sym.dsolve(expr, ics={y(0): 0, y(t).diff(t).subs(t, 0): 0})  #* solution of ODE
-pprint(simp(sol))
+# pprint(simp(sol))
 
 Y = 1/s - 2/(s+4) +1/(s+8)
 sol2 = invLT(Y, s, t)  #* solution from inverse laplace transform
 print('\n ====== =====')
-pprint(simp(sol2))
+# pprint(simp(sol2))
 
 
+#*---------- ----------
+#*    cases
+#*---------- ----------
+# Y=2/(s**2+3*s+2)          #* case 1
+# Y = 2/((s+1)*(s+2)*(s+2)) #* case 2
+Y = 3/(s*(s**2+2*s+5))     #* case 3
+ans = invLT(Y, s, t)
+pprint(simp(ans))
+
+
+#*---------- ----------
+#*    case 2
+#*---------- ----------
 
 
 
