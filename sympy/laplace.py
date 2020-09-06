@@ -5,7 +5,7 @@ from sympy          import Heaviside
 from sympy          import sin, cos, tan, cot
 from sympy.printing import pprint
 from sympy          import simplify as simp
-
+from sympy.printing.latex import latex
 
 #* in SymPy, variables are defined using symbols
 t, s = sym.symbols('t, s')
