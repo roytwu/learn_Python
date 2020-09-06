@@ -42,3 +42,16 @@ from sympy.matrices import Matrix
 I = Matrix([[1,0,0],[0,1,0], [0,0,1]])
 pprint(2*I)
 pprint(eye(3))
+
+
+#* Equals sign
+from sympy import sin, cos, tan, cot
+a = sin(x)
+b = cos(x)
+out = a**2+b**2
+print(sym.simplify(out-1))
+
+
+
+
+
