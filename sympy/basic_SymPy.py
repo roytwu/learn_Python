@@ -44,12 +44,16 @@ pprint(2*I)
 pprint(eye(3))
 
 
-#* Equals sign
-from sympy import sin, cos, tan, cot
-a = sin(x)
-b = cos(x)
-out = a**2+b**2
-print(sym.simplify(out-1))
+#* Spring-mass example
+s, k, m = sym.symbols('s, k, m')
+C  = Matrix([[1, 0]])
+sI = Matrix([[s, 0], [0, s]])
+A  = Matrix([[0, 1], [-k/m, 0]])
+cp = Matrix([[s, -1], [k/m, s]]).inv()
+B  = Matrix([[0], [1/m]])
+#T  = C*cp*B
+T  = C*(sI-A).inv()*B
+pprint(sym.simplify(T))
 
 
 

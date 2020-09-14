@@ -1,3 +1,8 @@
+"""
+Author:      Roy Wu
+Description: Laplace transform on SymPy
+"""
+
 from sympy.integrals.transforms import laplace_transform as LT
 from sympy.integrals.transforms import inverse_laplace_transform as invLT
 import sympy as sym
@@ -6,6 +11,7 @@ from sympy          import sin, cos, tan, cot
 from sympy.printing import pprint
 from sympy          import simplify as simp
 from sympy.printing.latex import latex
+
 
 #* in SymPy, variables are defined using symbols
 t, s = sym.symbols('t, s')
