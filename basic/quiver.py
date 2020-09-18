@@ -33,7 +33,7 @@ print('y2 is....', y2)
 #*---------- ----------
 #*    3D vector plot  (rotaiton over 2pi)
 #*---------- ----------
-rg  = np.linspace(-np.pi, np.pi, 20)
+rg  = np.linspace(-np.pi, np.pi, 20) 
 
 for th in rg:
   mtx = np.array([[math.cos(th), -math.sin(th), 0], [math.sin(th), math.cos(th), 0], [0., 0, 1]])
@@ -47,3 +47,13 @@ ax.set_zlim([0, 3])
 
 
 plt.show()
+
+
+# #* Spring-mass example
+# s, k, m = sym.symbols('s, k, m')
+# C  = Matrix([[1, 0]])
+# sI = Matrix([[s, 0], [0, s]])
+# A  = Matrix([[0, 1], [-k/m, 0]])
+# B  = Matrix([[0], [1/m]])
+# T  = C*(sI-A).inv()*B
+# pprint(sym.simplify(T))
