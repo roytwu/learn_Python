@@ -25,5 +25,5 @@ def fibonacci2(n):
 
 
 
-ans=fibonacci(25)
+ans=fibonacci()
 print(ans)

@@ -7,6 +7,7 @@ import numpy             as np
 import matplotlib.pyplot as plt
 from numpy                import linalg
 from mpl_toolkits.mplot3d import Axes3D 
+import quiver
 
 fig = plt.figure()
 ax = plt.axes(projection='3d')
@@ -48,6 +49,7 @@ ax.set_zlim([0, 3])
 
 plt.show()
 
+<<<<<<< HEAD
 
 # #* Spring-mass example
 # s, k, m = sym.symbols('s, k, m')
@@ -57,3 +59,6 @@ plt.show()
 # B  = Matrix([[0], [1/m]])
 # T  = C*(sI-A).inv()*B
 # pprint(sym.simplify(T))
+=======
+print(quiver)
+>>>>>>> 8a70f5118b11b49797d9071499015324db0c8e10
