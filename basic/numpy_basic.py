@@ -43,14 +43,14 @@ totoT = toto.transpose()             #* matris transpose
 tata = np.array([[math.cos(0.5), 0, math.sin(0.5)], [0, 1, 0], [-math.sin(0.5), 0, math.cos(0.5)]])
 tataDet = linalg.det(tata)  #* determinant
 lamb, v = linalg.eig(tata)
-print("eigenvalues are...", lamb)
-print("eigenvectors are...", v[0])
+# print("eigenvalues are...", lamb)
+# print("eigenvectors are...", v[0])
 
-I = np.array([[1, 0, 0], [0, 1, 0], [0, 0, 1]])
-dumm1 = np.dot(lamb[0], I)
-print("dumm1...", dumm1)
-output = np.matmul((tata-dumm1), v[:,0])
-print('output is...', output)
+# I = np.array([[1, 0, 0], [0, 1, 0], [0, 0, 1]])
+# dumm1 = np.dot(lamb[0], I)
+# print("dumm1...", dumm1)
+# output = np.matmul((tata-dumm1), v[:,0])
+# print('output is...', output)
 
 
 #*---------- ----------
@@ -82,3 +82,22 @@ eu3 = cosm(a) + 1j*sinm(a)
 
 # # plt.show()
 # plt.savefig('foo.pdf')
+
+#*---------- ----------
+#*    linearizing triggometric functions 
+#*---------- ----------
+x = np.linspace(0, math.pi*2, 50) #* start, stop, step
+y = np.cos(x)
+y2 = (1-x)*np.sqrt(2)/2
+y3 = -1+0*x
+fig = plt.figure()
+plt.plot(x,y, 'b')
+plt.plot(x,y2, 'r')
+plt.plot(x,y3, 'c')
+
+
+
+
+
+
+
