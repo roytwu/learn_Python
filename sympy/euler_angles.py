@@ -11,6 +11,7 @@ from sympy          import asin, acos, atan, atan2
 from sympy.printing import pprint
 from sympy.matrices import Matrix
 from sympy          import simplify as simp
+import numpy as np
 
 al, be, ga      = symbols("alpha beta gamma")
 th, phi, psi    = symbols("theta phi psi")
@@ -26,7 +27,9 @@ Ryy = Matrix([ [cos(phi), 0, sin(phi)], [0,1,0], [-sin(phi), 0, cos(phi)] ])
 Rzz = Matrix([ [cos(psi), -sin(psi), 0], [sin(psi), cos(psi), 0], [0,0,1] ])
 
 
-#* Euler angle x-y-z
+#*---------- ----------
+#*    Euler angle x-y-z
+#*---------- ----------
 bRg = Rx*Ry*Rz 
 print("---------\n")
 pprint(bRg)
@@ -43,7 +46,9 @@ expr = bRg.subs(ga,0) #evaluate bRg at gamma=0
 pprint(expr)
 
 
-#* Euler angle z-y-x 
+#*---------- ----------
+#*    Euler angle z-y-x
+#*---------- ----------
 bRg2 = Rzz*Ryy*Rxx 
 print("---------\n")
 pprint(bRg2)
@@ -57,3 +62,41 @@ pprint(simp(a2))
 Ryx= simp(Ryy*Rxx)
 Rbm = Matrix([ [1,0,0], [0, -1, 0], [0, 0, -1] ])
 pprint(simp(Ryx*Rbm));
+
+
+
+#*---------- ----------
+#*    Euler angle z-x-z (procession-nutation-spin)
+#*---------- ----------
+phi = 35 * np.pi/180
+th  = 100 * np.pi/180
+psi = 75 * np.pi/180
+
+phi = 90 * np.pi/180
+th  = 40 * np.pi/180
+psi = 160 * np.pi/180
+
+pre  = Matrix([ [cos(phi), -sin(phi), 0], [sin(phi), cos(phi), 0], [0,0,1] ])
+nut  = Matrix([ [1,0,0], [0, cos(th), -sin(th)], [0, sin(th), cos(th)] ])
+spin = Matrix([ [cos(psi), -sin(psi), 0], [sin(psi), cos(psi), 0], [0,0,1] ])
+
+R_OB = pre*nut*spin    #* sympy multiplication
+R_OB = R_OB.evalf(3)   #* round off 
+pprint(simp(R_OB))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
