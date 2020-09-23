@@ -81,8 +81,13 @@ nut  = Matrix([ [1,0,0], [0, cos(th), -sin(th)], [0, sin(th), cos(th)] ])
 spin = Matrix([ [cos(psi), -sin(psi), 0], [sin(psi), cos(psi), 0], [0,0,1] ])
 
 R_OB = pre*nut*spin    #* sympy multiplication
-R_OB = R_OB.evalf(3)   #* round off 
+# R_OB = R_OB.evalf(3)   #* round off 
 pprint(simp(R_OB))
+
+
+ans1 = R_OB.inv()
+ans2 = R_OB.transpose()
+print(simp(ans1-ans2))
 
 
 
