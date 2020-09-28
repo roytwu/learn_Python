@@ -17,7 +17,7 @@ from math import radians, degrees
 l1=3     #* link 1
 l2=1     #* link 2
 th1=60   #* joint variable 1 in degrees
-th2=60  #* joint variable 2 in degrees
+th2=45  #* joint variable 2 in degrees
 th1 = radians(th1) #* convert degree to radians
 th2 = radians(th2)
 x = l1*cos(th1) +l2*cos(th1+th2)
@@ -37,14 +37,25 @@ t2 = degrees(t2)
 t2 = round(t2, 5)
 print('theta2 is...', t2)
 
+#*---------- ----------
+#*    arc-tangent (method1), half angle formula
+#*---------- ----------
+dum1 = (1-d)/(1+d)
+dum1 = math.sqrt(dum1)
+toto = degrees(atan(dum1/dum2)*2)
+print('toto is...', toto)
+
+
 
 #*---------- ----------
-#*    arc-tangent
+#*    arc-tangent (method2)
 #*---------- ----------
 dum1 = math.sqrt(1-d**2)
 dum2 = d 
 toto = degrees(atan(dum1/dum2))
 print('toto is...', toto)
+
+
 
 #*---------- ----------
 #*    atan2
