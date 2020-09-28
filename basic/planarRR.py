@@ -7,7 +7,7 @@ import numpy             as np
 import matplotlib.pyplot as plt
 from numpy        import linalg
 from scipy.linalg import expm, sinm, cosm
-from math import sin, cos, acos, atan, atan2
+from math import sin, cos, acos, atan, atan2, sqrt
 from math import radians, degrees
  
 
@@ -17,7 +17,9 @@ from math import radians, degrees
 l1=3     #* link 1
 l2=1     #* link 2
 th1=60   #* joint variable 1 in degrees
-th2=-150  #* joint variable 2 in degrees
+th2=45  #* joint variable 2 in degrees
+# th1=81.598
+# th2=-45  
 th1 = radians(th1) #* convert degree to radians
 th2 = radians(th2)
 x = l1*cos(th1) +l2*cos(th1+th2)
@@ -55,11 +57,28 @@ toto = degrees(atan(ntor/dtor))
 print('(invK, atan) theta2 is...', toto)
 
 
+#*---------- ----------
+#*    arc-tangent -2
+#*---------- ----------
+duma =((l1+l2)**2 - (x**2+y**2))/((x**2+y**2)-(l1-l2)**2) 
+duma = sqrt(duma)
+titi = 2*degrees(atan((duma)))
+print('titi is...', titi)
+
 
 #*---------- ----------
-#*    invK atan2
+#*    elbow up
 #*---------- ----------
-tata = degrees(atan2(ntor, dtor))
-print('(invK, atan2) theta2 is...', tata)
+TH2 = -degrees(atan2(ntor, dtor))
+print('theta2 from invK is...', TH2)
+
+cosAlpha = (x**2+y**2+l1**2-l2**2)/(2*l1*sqrt(x**2+y**2))
+alpha = degrees(atan2(sqrt(1-cosAlpha**2), cosAlpha))
+gamma = degrees(atan2(y, x))
+print('gamma from invK is...', gamma)
+TH1 = gamma+alpha
+print('theta1 from invK is...', TH1)
+
+
 
 
