@@ -39,14 +39,24 @@ t2 = degrees(t2)
 t2 = round(t2, 5)
 print('theta2 is...', t2)
 
+#*---------- ----------
+#*    arc-tangent (method1), half angle formula
+#*---------- ----------
+dum1 = (1-d)/(1+d)
+dum1 = math.sqrt(dum1)
+toto = degrees(atan(dum1/dum2)*2)
+print('toto is...', toto)
+
+
 
 #*---------- ----------
-#*    arc-tangent -1
+#*    arc-tangent (method2)
 #*---------- ----------
 dum1 = sqrt(1-d**2)
 dum2 = d 
 toto = degrees(atan(dum1/dum2))
 print('toto is...', toto)
+
 
 
 #*---------- ----------
@@ -56,6 +66,7 @@ duma =((l1+l2)**2 - (x**2+y**2))/((x**2+y**2)-(l1-l2)**2)
 duma = sqrt(duma)
 titi = 2*degrees(atan((duma)))
 print('titi is...', titi)
+
 
 #*---------- ----------
 #*    elbow up
