@@ -17,7 +17,7 @@ from math import radians, degrees
 l1=3     #* link 1
 l2=1     #* link 2
 th1=60   #* joint variable 1 in degrees
-th2=45  #* joint variable 2 in degrees
+th2=-150  #* joint variable 2 in degrees
 th1 = radians(th1) #* convert degree to radians
 th2 = radians(th2)
 x = l1*cos(th1) +l2*cos(th1+th2)
@@ -27,40 +27,39 @@ y=round(y, 5)
 print('posiiton is...', x, y)
 
 #*---------- ----------
-#*    arc-cosine 
+#*    invK - arc-cosine 
 #*---------- ----------
-dum1 = x**2+y**2-l1**2-l2**2
-dum2 = 2*l1*l2 
-d = dum1/dum2
+cosN = x**2+y**2-l1**2-l2**2
+cosD = 2*l1*l2 
+d = cosN/cosD
 t2 = acos(d)
 t2 = degrees(t2)
 t2 = round(t2, 5)
-print('theta2 is...', t2)
+print('(invK, acos) theta2 is...', t2)
 
 #*---------- ----------
-#*    arc-tangent (method1), half angle formula
+#*    invK arc-tangent, half angle formula
 #*---------- ----------
 dum1 = (1-d)/(1+d)
 dum1 = math.sqrt(dum1)
-toto = degrees(atan(dum1/dum2)*2)
-print('toto is...', toto)
+toto = degrees(atan(dum1)*2)
+print('\n(invK, half-angle atan) theta2 is...', toto)
+
+
+#*---------- ----------
+#*    invK arc-tangent (method2)
+#*---------- ----------
+ntor = math.sqrt(1-d**2)
+dtor = d 
+toto = degrees(atan(ntor/dtor))
+print('(invK, atan) theta2 is...', toto)
 
 
 
 #*---------- ----------
-#*    arc-tangent (method2)
+#*    invK atan2
 #*---------- ----------
-dum1 = math.sqrt(1-d**2)
-dum2 = d 
-toto = degrees(atan(dum1/dum2))
-print('toto is...', toto)
-
-
-
-#*---------- ----------
-#*    atan2
-#*---------- ----------
-tata = degrees(atan2(dum1, dum2))
-print('tata is...', tata)
+tata = degrees(atan2(ntor, dtor))
+print('(invK, atan2) theta2 is...', tata)
 
 
