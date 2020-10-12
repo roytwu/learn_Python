@@ -36,7 +36,7 @@ ans3 = sym.diff(sym.sin(x)*sym.exp(x), x)
 ans4 = sym.Integral(sym.sqrt(1/x), x)
 
 # pretty-print
-sym.printing.pprint(ans2, ans3)
+# sym.printing.pprint(ans2, ans3)
 
 
 #*---------- ----------
@@ -57,17 +57,17 @@ s, k, m = sym.symbols('s, k, m')
 #*    state transition matrix
 #*---------- ----------
 t = sym.symbols('t',  positive=True)
-A =  Matrix([[0, 1, 0], [0, 0, 1], [-24, -26, -9]])
-sI = Matrix([[s, 0, 0], [0, s, 0], [0, 0, s]])
-resolvent = (sI-A).inv()
-pprint(simp(resolvent))
+# A =  Matrix([[0, 1, 0], [0, 0, 1], [-24, -26, -9]])
+# sI = Matrix([[s, 0, 0], [0, s, 0], [0, 0, s]])
+# resolvent = (sI-A).inv()
+# pprint(simp(resolvent))
 
-sol = invLT(resolvent, s, t) 
-pprint(simp(sol))
-
-# reToto = sI = Matrix([[s, -1], [8, s+6]]).inv()
-# sol = invLT(reToto, s, t) 
+# sol = invLT(resolvent, s, t) 
 # pprint(simp(sol))
+
+reToto = sI = Matrix([[s, -1], [1, s]]).inv()
+sol = invLT(reToto, s, t) 
+pprint(simp(sol))
 
 
 

@@ -4,7 +4,7 @@ from sympy.printing import pprint
 from sympy.matrices import Matrix
 from sympy          import simplify as simp
 from sympy          import symbols
-# from sympy          import sin, cos
+from sympy          import Matrix
 # from sympy.abc      import a, b, c, d
 from math           import cos, sin
 from numpy.linalg   import multi_dot
@@ -33,4 +33,15 @@ def hXform (a, al, d, th):
     # dumm1 = np.matmul(Rotz, Tranz)
     # dumm2 = np.matmul(Tranx, Rotx)
     out = multi_dot([Rotz, Tranz, Tranx, Rotx])
+    return out
+
+
+def hXformSym (a, al, d, th):
+    Rotz  = Matrix([ [sym.cos(th), -sym.sin(th), 0, 0], [sym.sin(th), sym.cos(th), 0, 0], 
+                       [0, 0, 1, 0], [0, 0, 0, 1]])   
+    Tranz = Matrix([ [1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, d], [0, 0, 0, 1]])
+    Tranx = Matrix([ [1, 0, 0, a], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]])
+    Rotx  = Matrix([ [1, 0, 0, 0], [0, sym.cos(al), -sym.sin(al), 0], 
+                       [0, sym.sin(al), sym.cos(al), 0], [0, 0, 0, 1]])
+    out = Rotz*Tranz*Tranx*Rotx
     return out
