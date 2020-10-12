@@ -8,6 +8,7 @@ from sympy          import Matrix
 # from sympy.abc      import a, b, c, d
 from math           import cos, sin
 from numpy.linalg   import multi_dot
+import copy
 
 al, be, ga   = symbols("alpha beta gamma")
 th, phi, psi = symbols("theta phi psi")
@@ -45,3 +46,24 @@ def hXformSym (a, al, d, th):
                        [0, sym.sin(al), sym.cos(al), 0], [0, 0, 0, 1]])
     out = Rotz*Tranz*Tranx*Rotx
     return out
+
+
+def hatSym(x):
+    x1 = x[0]
+    x2 = x[1]
+    x3 = x[2]
+    output = Matrix([ [0, -x3, x2], [x3, 0, -x1], [-x2, x1, 0]])
+    return output
+
+def veeSym(matrix):
+    x1 = matrix[2, 1]
+    x2 = matrix[0, 2]
+    x3 = matrix[1, 0]
+    output = Matrix([ [x1], [x2], [x3]])
+    return output
+
+
+
+    
+
+
