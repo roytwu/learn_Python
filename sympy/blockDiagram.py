@@ -67,6 +67,34 @@ b4= feedback(b3, b3*dumm1)
 pprint(simp(b4))
 
 
+#*---------- ----------
+#*    unity v.s. nonUnity
+#*---------- ----------
+G, Ge, H = sym.symbols('G, Ge, H')
+
+Ge = G/(1+G*H-G)
+T = feedback(Ge, Ge)
+pprint(simp(T))
+
+
+#*---------- ----------
+#*    Example7.8
+#*---------- ----------
+R1 = 1/s
+G1 = 100/(s*(s+10))
+H1 = 1/(s+5)
+T1 = feedback(G1, G1*H1)
+E1= R1*(1-T1)
+pprint(simp(E1))
+
+Ge1 = G1/(1+G1*H1-G1)
+E2 = R1/(1+Ge1)
+
+pprint(simp(E1-E2)) 
+
+
+
+
 
 
 

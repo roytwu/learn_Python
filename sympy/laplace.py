@@ -10,6 +10,7 @@ from sympy           import pi, exp
 from sympy.matrices  import Matrix
 from sympy.abc import x, t, s, m
 
+
 #*---------- ----------
 #*    Basic
 #*---------- ----------
@@ -115,4 +116,13 @@ A  = Matrix([[0, 1], [-k/m, 0]])
 B  = Matrix([[0], [1/m]])
 T  = C*(sI-A).inv()*B
 pprint(sym.simplify(T))
+
+
+
+
+
+
+
+
+
 
