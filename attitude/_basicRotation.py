@@ -4,7 +4,7 @@ Description: Symbolic computations to test funcitons of mapping between
              SO(3) and Redrigues formula
 """
 from sympy          import symbols
-from sympy          import sin, cos, tan, cot
+from sympy          import sin, cos, tan, cot, pi
 from sympy          import asin, acos, atan, atan2
 from sympy.printing import pprint
 from sympy.matrices import Matrix
@@ -58,28 +58,11 @@ Bpp_x = Rz*Ry*xBasis
 #pprint(Bpp_x)
 
 
-
 combine = Matrix([[0, -sin(psi), cos(psi)*cos(th)], [0, cos(psi), sin(psi)*cos(th)], [1, 0, -sin(th)]])
 cInv= combine.inv()
 
 print("\nCombine is...")
 pprint(simp(cInv))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # Bp_y = (Rz)*yBasis
@@ -92,3 +75,13 @@ pprint(simp(cInv))
 
 # cInv = combine.inv()
 # pprint(simp(cInv)) 
+
+
+
+#*---------- ----------
+#*    RRR manipulator
+#*---------- ----------
+R1 = SO3.Ry(-pi) #* 1st rotation; o  -> B'
+# R2 = SO3.Rx(pi/2)  #* 2nd rotation; B' -> B"
+pprint(R1)
+

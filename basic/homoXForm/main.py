@@ -37,13 +37,31 @@ T = multi_dot([jt1, jt2, jt3]).round(3)
 #*---------- ----------
 #*    SSRMS
 #*---------- ----------
-jt1 = hXform(0, -np.pi/2, 1.0, np.pi/2)  #*la
-jt2 = hXform(0, -np.pi/2, 1.2, -np.pi/2) #*lb
-jt3 = hXform(5, 0, 1.4, -np.pi/2) #*lc
-jt4 = hXform(5, 0, 0, 0) #* d=0
-jt5 = hXform(0, np.pi/2, 1.6, -np.pi) #* lf
-jt6 = hXform(0, -np.pi/2, 1.8, np.pi/2) #* lg
-jt7 = hXform(0, 0, 2.0, 0) #* lg
+#* problem #2
+#* th1=th6=pi/2, th2=th3=th4=-pi/2, th5=-pi, th7=0
+la=1.0
+lb=1.2
+lc=1.4
+ld=5.0
+le=5.0
+lf=1.6
+lg=1.8
+lh=2.0
+th1 = np.pi/2
+th2 = -np.pi/2
+th3 = -np.pi/2
+th4 = -np.pi/2
+th5 = -np.pi
+th6 = np.pi/2
+th7 = 0
+
+jt1 = hXform(0, -np.pi/2, la, th1)  #* la
+jt2 = hXform(0, -np.pi/2, lb, th2)  #* lb
+jt3 = hXform(ld, 0, lc, th3)        #* lc, ld
+jt4 = hXform(le, 0, 0, th4)         #* le
+jt5 = hXform(0, np.pi/2, lf, th5)   #* lf
+jt6 = hXform(0, -np.pi/2, lg, th6)  #* lg
+jt7 = hXform(0, 0, lh, th7)         #* lh
 T = multi_dot([jt1, jt2, jt3, jt4, jt5, jt6, jt7]).round(3)
 pprint(T)
 
