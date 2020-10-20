@@ -10,6 +10,8 @@ from sympy.abc      import a, b, c, d
 from sympy          import lambdify
 
 from homoTrans import hXform #* use custom module
+from homoTrans import hatSym #* use custom module
+from homoTrans import veeSym #* use custom module
 
 
 a1, alpha1, d1, th1 = symbols('a_1, alpha_1, d_1, theta_1')
@@ -76,7 +78,11 @@ pprint(T)
 # pprint(T)
 
 
-
-
-
+#*---------- ----------
+#*    HW#6
+#*---------- ----------
+x= Matrix([ [3], [5], [-7]])
+y= Matrix([ [-1], [2], [3]])
+out = hatSym(x)*y
+pprint(out)
 

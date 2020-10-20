@@ -6,8 +6,10 @@ import math
 import numpy             as np
 import matplotlib.pyplot as plt
 from numpy        import linalg
+from numpy        import angle
 from scipy.linalg import expm, sinm, cosm
 from pprint       import pprint 
+
 
 #*---------- ----------
 #*    matrix exponential  
@@ -96,8 +98,48 @@ plt.plot(x,y2, 'r')
 plt.plot(x,y3, 'c')
 
 
+#*---------- ----------
+#*    polar coordinate
+#*---------- ----------
+M4 = -5+9j
+M2 = -3+9j
+M5 = -7+9J
+M3 = -4+9j
+M1 = -1+9j
+mag =abs(M4)*abs(M2)/ (abs(M5)*abs(M3)*abs(M1))
+a = angle(M4)+angle(M2) - (angle(M5)+angle(M3)+angle(M1))
+print(mag)
+print(np.degrees(a))
 
 
+#* example 2
+zero1 = -4+0j
+zero2 = -3+0j
+pole1 = -2+0j
+pole2 = -1+0j
+a1 = -2+3j
+a2 = -2+(math.sqrt(2)/2)*1j
 
+angle1 =angle(a1-zero1)+angle(a1-zero2) -angle(a1-pole1) -angle(a1-pole2)
+print(np.degrees(angle1))
+
+angle2 =angle(a2-zero1)+angle(a2-zero2) -angle(a2-pole1) -angle(a2-pole2)
+print(np.degrees(angle2))
+
+mP = abs(a2-pole1)*abs(a2-pole2)
+mZ = abs(a2-zero1)*abs(a2-zero2)
+K = mP/mZ 
+print('K is...', K)
+
+* exercise 8.2
+p = -3
+pole1 = -2 +3j
+pole2 = -2 -3*1j
+zero =  -2
+ang = angle(p-zero)-angle(p-pole1)-angle(p-pole2)
+print('angles is...', np.degrees(ang))
+
+K = abs(p-pole1)*abs(p-pole2)/abs(p-zero) 
+print('K is...', K)
 
 
