@@ -47,6 +47,20 @@ def hXformSym (a, al, d, th):
     out = Rotz*Tranz*Tranx*Rotx
     return out
 
+def hXFormSYM (input):
+    a  = input[0]
+    al = input[1]
+    d  = input[2]
+    th = input[3]
+    Rotz  = Matrix([ [sym.cos(th), -sym.sin(th), 0, 0], [sym.sin(th), sym.cos(th), 0, 0], 
+                       [0, 0, 1, 0], [0, 0, 0, 1]])   
+    Tranz = Matrix([ [1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, d], [0, 0, 0, 1]])
+    Tranx = Matrix([ [1, 0, 0, a], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]])
+    Rotx  = Matrix([ [1, 0, 0, 0], [0, sym.cos(al), -sym.sin(al), 0], 
+                       [0, sym.sin(al), sym.cos(al), 0], [0, 0, 0, 1]])
+    out = Rotz*Tranz*Tranx*Rotx
+    return out
+
 
 def hatSym(x):
     x1 = x[0]
