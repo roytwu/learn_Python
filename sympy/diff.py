@@ -8,7 +8,7 @@ from sympy           import simplify as simp
 # from IPython.display import display  #* neat display for iPython
 from sympy           import pi, exp
 from sympy.matrices  import Matrix
-from sympy.abc       import x, t, s, m
+from sympy.abc       import x, t, s, m, k
 
 
 
@@ -32,3 +32,9 @@ pprint(sol)
 
 
 
+#*---------- ----------
+#*   Imaginary axis crossing
+#*---------- ----------
+expr = (1+k)*0-(25+8*k)*(6-6*k)
+sol = solve(expr, k)
+pprint(sol)

@@ -131,7 +131,7 @@ mZ = abs(a2-zero1)*abs(a2-zero2)
 K = mP/mZ 
 print('K is...', K)
 
-* exercise 8.2
+#* exercise 8.2
 p = -3
 pole1 = -2 +3j
 pole2 = -2 -3*1j
