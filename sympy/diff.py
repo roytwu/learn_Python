@@ -8,7 +8,7 @@ from sympy           import simplify as simp
 # from IPython.display import display  #* neat display for iPython
 from sympy           import pi, exp
 from sympy.matrices  import Matrix
-from sympy.abc       import x, t, s, m, k
+from sympy.abc       import x, y, t, s, m, k
 
 
 
@@ -30,6 +30,15 @@ from sympy.abc       import x, t, s, m, k
 
 # sol = solve(output, s)
 # print('\nbreakaway & breakin point...')
+# pprint(sol)
+
+
+
+# #*---------- ----------
+# #*   Imaginary axis crossing
+# #*---------- ----------
+# expr = (1+k)*0-(25+8*k)*(6-6*k)
+# sol = solve(expr, k)
 # pprint(sol)
 
 
@@ -56,12 +65,17 @@ out = sym.integrate(eq3, x)
 pprint(simp(out))
 
 
-#*---------- ----------
-#*   Imaginary axis crossing
-#*---------- ----------
-expr = (1+k)*0-(25+8*k)*(6-6*k)
-sol = solve(expr, k)
-pprint(sol)
+#* demo 
+expr1 = x**2 +3*x +2
+#expr1 = 2*(x**2)*cos(x)**2 +sin(x)**2
+out = expr1.diff(x) #* call as method
+pprint(out)
 
+out2 = solve(expr1, x)
+print(out2)
+
+expr2 = cos(x)**2*sin(y)
+out3 = diff(expr2, x, y)
+print(out3)
 
 
