@@ -1,8 +1,8 @@
 """
-File name:   attitude.py
-Date:        Created on Thur Jan 17 2019
-Author:      wur
+Author:      Roy Wu
 Description: symbolic computations for Euler angles
+History:     01/17/2019 -- initial verison
+             02/09/2021 -- revisit
 """
 
 from sympy          import symbols

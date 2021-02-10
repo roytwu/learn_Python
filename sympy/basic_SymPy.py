@@ -1,7 +1,8 @@
 """
-Created on: Tue Jan 15 14:51:35 2019
-File name:  basic_SymPy.py
-Author:     wur
+Author:      Roy Wu
+Description: Basic sympy operation 
+History:     xx/xx/2019 -- initial version
+             02/09/2021 -- revisit
 """
 
 import sympy as sym

@@ -1,3 +1,9 @@
+"""
+Author:      Roy Wu
+Description: Laplace transform with sympy
+History:     xx/xx/2020 -- initial version
+             02/09/2021 -- revisit
+"""
 from sympy.integrals.transforms import laplace_transform as LT
 from sympy.integrals.transforms import inverse_laplace_transform as invLT
 import sympy as sym

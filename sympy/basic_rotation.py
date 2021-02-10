@@ -1,8 +1,7 @@
 """
-File name:   rotation.py
-Date:        Created on Wed Jan 16 16:36:31 2019
-Author:      wur
-Description: symbolic computations for rotation matrices
+Author:      Roy Wu
+Description: Symbolic computations for rotation matrices
+History:     02/09/2021 revisit
 """
 #import mpmath
 import sympy as sym

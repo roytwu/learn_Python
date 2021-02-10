@@ -17,7 +17,7 @@ from math import radians, degrees
 l1=3     #* link 1
 l2=1     #* link 2
 th1=60   #* joint variable 1 in degrees
-th2=45  #* joint variable 2 in degrees
+th2=45   #* joint variable 2 in degrees
 # th1=81.598
 # th2=-45  
 th1 = radians(th1) #* convert degree to radians
