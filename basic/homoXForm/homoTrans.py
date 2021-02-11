@@ -1,3 +1,9 @@
+"""
+Author:      Roy Wu
+Description: Homogeneous transformation
+History:     xx/xx/2020 - intial version
+             02/11/2021 - revisit
+"""
 import numpy as np
 import sympy as sym
 from sympy.printing import pprint

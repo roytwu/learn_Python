@@ -1,3 +1,9 @@
+"""
+Author:      Roy Wu
+Description: Symbolic computations for rotation matrices
+History:     xx/xx/2020 - intial version
+             02/11/2021 - revisit
+"""
 import numpy as np
 import sympy as sym
 from numpy.linalg   import multi_dot
@@ -37,18 +43,18 @@ T = multi_dot([jt1, jt2, jt3]).round(3)
 
 
 #*---------- ----------
-#*    SSRMS
+#*    SSRMS (forward K)
 #*---------- ----------
-#* problem #2
 #* th1=th6=pi/2, th2=th3=th4=-pi/2, th5=-pi, th7=0
-la=1.0
-lb=1.2
-lc=1.4
-ld=5.0
-le=5.0
-lf=1.6
-lg=1.8
-lh=2.0
+la=10
+lb=12
+lc=14
+ld=50
+le=50
+lf=16
+lg=18
+lh=20
+
 th1 = np.pi/2
 th2 = -np.pi/2
 th3 = -np.pi/2
@@ -66,6 +72,13 @@ jt6 = hXform(0, -np.pi/2, lg, th6)  #* lg
 jt7 = hXform(0, 0, lh, th7)         #* lh
 T = multi_dot([jt1, jt2, jt3, jt4, jt5, jt6, jt7]).round(3)
 pprint(T)
+
+
+
+#* zero position
+#th1 = th2 = th3 = th4 = th5 = th6 = th7 =0 
+
+
 
 
 # jt1 = hXform(0, -np.pi/2, 1.0, np.pi/2)

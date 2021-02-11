@@ -1,6 +1,8 @@
 """
 Author:      Roy Wu
 Description: planar polar manipulator 
+History:     xx/xx/2020 - intial version
+             02/11/2021 - revisit
 """
 
 import numpy as np
