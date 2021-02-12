@@ -10,12 +10,14 @@ from numpy.linalg   import multi_dot
 from sympy.printing import pprint
 from sympy.matrices import Matrix
 from sympy          import simplify as simp
+from sympy          import nsimplify as nsimp
 from sympy          import sin, cos
 from sympy          import symbols
 from sympy.abc      import a, b, c, d
 from sympy          import lambdify
 
 from homoTrans import hXform #* use custom module
+from homoTrans import hXformSym #* use custom module
 from homoTrans import hatSym #* use custom module
 from homoTrans import veeSym #* use custom module
 
@@ -51,21 +53,29 @@ lb=12
 lc=14
 ld=50
 le=50
-lf=16
-lg=18
-lh=20
+lf=18
+lg=16
+lh=13
 
-th1 = np.pi/2
-th2 = -np.pi/2
-th3 = -np.pi/2
-th4 = -np.pi/2
-th5 = -np.pi
-th6 = np.pi/2
-th7 = 0
+# #* cofiguration 1
+# th1 = np.pi/2
+# th2 = -np.pi/2
+# th3 = -np.pi/2
+# th4 = -np.pi/2
+# th5 = -np.pi
+# th6 = np.pi/2
+# th7 = 0
+
+#* zero position
+th1 = 0
+th2 = th3 = th4 = th5 = th6 = th7 =0 
+#* X: ld, le -lc 
+#* Y: lb, lf
+#* Z: la-lc-lf-lh    
 
 jt1 = hXform(0, -np.pi/2, la, th1)  #* la
-jt2 = hXform(0, -np.pi/2, lb, th2)  #* lb
-jt3 = hXform(ld, 0, lc, th3)        #* lc, ld
+jt2 = hXform(0, -np.pi/2, lb, th3)  #* lb
+jt3 = hXform(ld, 0, lc, th2)        #* lc, ld
 jt4 = hXform(le, 0, 0, th4)         #* le
 jt5 = hXform(0, np.pi/2, lf, th5)   #* lf
 jt6 = hXform(0, -np.pi/2, lg, th6)  #* lg
@@ -74,9 +84,21 @@ T = multi_dot([jt1, jt2, jt3, jt4, jt5, jt6, jt7]).round(3)
 pprint(T)
 
 
+lA, lB, lC, lD = symbols('l_a, l_b, l_c, l_d')
+lE, lF, lG, lH = symbols('l_e, l_f, l_g, l_h')
 
-#* zero position
-#th1 = th2 = th3 = th4 = th5 = th6 = th7 =0 
+jt1 = hXformSym(0, -np.pi/2, lA, th1)  #* la
+jt2 = hXformSym(0, -np.pi/2, lB, th3)  #* lb
+jt3 = hXformSym(lD, 0, lC, th2)        #* lc, ld
+jt4 = hXformSym(lE, 0, 0, th4)         #* le
+jt5 = hXformSym(0, np.pi/2, lF, th5)   #* lf
+jt6 = hXformSym(0, -np.pi/2, lG, th6)  #* lg
+jt7 = hXformSym(0, 0, lH, th7)         #* lh
+T = jt1*jt2*jt3*jt4*jt5*jt6*jt7
+#T = T.evalf(2)
+pprint(nsimp(T, tolerance=1e-10, rational=True))
+
+
 
 
 
@@ -91,11 +113,11 @@ pprint(T)
 # pprint(T)
 
 
-#*---------- ----------
-#*    HW#6
-#*---------- ----------
-x= Matrix([ [3], [5], [-7]])
-y= Matrix([ [-1], [2], [3]])
-out = hatSym(x)*y
-pprint(out)
+# #*---------- ----------
+# #*    HW#6
+# #*---------- ----------
+# x= Matrix([ [3], [5], [-7]])
+# y= Matrix([ [-1], [2], [3]])
+# out = hatSym(x)*y
+# pprint(out)
 
