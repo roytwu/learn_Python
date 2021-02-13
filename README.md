@@ -30,11 +30,11 @@ Following [tutorial](https://bit.ly/2ENkI1Q) to learn about baisc OpenGL in Pyth
 
 
 ## sympy
-Symbolic matrix operations, including matrix transpose, inverse, determinant, and multiplication.
+Symbolic operations
+ - Matrix operations such as transpose, inverse, determinant, and multiplication
+ - Laplace transform
+ - block diagram algebra
 
-
-## palindrome
-Tell if a word is a palindrome
 
 ## pySerial
 basic commands about pySerial
