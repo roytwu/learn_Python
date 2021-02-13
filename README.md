@@ -19,6 +19,14 @@ Operations about SO(3) utilizing the following custom modules:
 - **S3.py** 
   - `multiplication()`: multiplication of 2 quaternions
 
+## basic
+Basic tutorials for Python 
+ - numpy
+ - palindrome
+ - quiver 
+ - serial commuication
+ 
+
 ## OOP
 Object-orientated programming in Python
 
@@ -36,8 +44,6 @@ Symbolic operations
  - block diagram algebra
 
 
-## pySerial
-basic commands about pySerial
 
 
 🎮 Deployment
