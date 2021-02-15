@@ -34,7 +34,7 @@ out = simp(toto + tata)
 u  = Heaviside(t)    #* step function
 foo = cos(om*t)*u    #* (7) in Laplace transform table
 fooLT = LT(foo, t, s)
-pprint(fooLT[0])
+# pprint(fooLT[0])
 #display(fooLT[0])
 
 
@@ -66,11 +66,11 @@ ddy = dydt.diff(t)     #* y_ddot
 left  = ddy + 12*dydt + 32*y(t)  #* ODE(Example 2.3)
 right = 32*u 
 expr = sym.Eq(left, right)  #* ODE expression
-pprint(expr)
+#pprint(expr)
 
 sol = sym.dsolve(expr, ics={y(0): 0, y(t).diff(t).subs(t, 0): 0})  #* solution of ODE
-print('\nSolutio of the ODE is...\n\n')
-pprint(sym.expand(sol))
+# print('\nSolutio of the ODE is...\n\n')
+# pprint(sym.expand(sol))
 
 Y = 1/s - 2/(s+4) +1/(s+8)
 sol2 = invLT(Y, s, t)  #* solution from inverse laplace transform
@@ -120,12 +120,20 @@ C  = Matrix([[1, 0]])
 sI = Matrix([[s, 0], [0, s]])
 A  = Matrix([[0, 1], [-k/m, 0]])
 B  = Matrix([[0], [1/m]])
-T  = C*(sI-A).inv()*B
-pprint(sym.simplify(T))
+G  = C*(sI-A).inv()*B
+pprint(simp(G))
 
 
 
-
+#*---------- ----------
+#*    Exercise 3.4
+#*---------- ----------
+C  = Matrix([[1.5, 0.625]])
+sI = Matrix([[s, 0], [0, s]])
+A  = Matrix([[-4, -1.5], [4, 0]])
+B  = Matrix([[2], [0]])
+G  = C*(sI-A).inv()*B
+pprint(simp(G))
 
 
 
