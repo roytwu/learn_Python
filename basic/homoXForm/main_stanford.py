@@ -31,13 +31,20 @@ from homoTrans import veeSym #* use custom module
 #*    Robot specs
 #*---------- ----------
 d2 =5
-d6 =5
+d6 =10
 
 
 #*---------- ----------
 #*    Joint vairables
 #*---------- ----------
+
+#* zero position
 th1=th2=d3=th4=th5=th6=0
+
+#* test case 1
+th2 = -np.pi/2
+th5 = np.pi/2
+d3=7
 
 
 #*---------- ----------
