@@ -30,76 +30,83 @@ a3, alpha3, d3, th3 = symbols('a_3, alpha_3, d_3, theta_3')
 # a1=a2=a3=1
 # th1=th2=th3=0
 
-a1=a2=a3=5.0
-th1=np.pi/2.0
-th2=th3=0
+# a1=a2=a3=5.0
+# th1=np.pi/2.0
+# th2=th3=0
+
+# #*---------- ----------
+# #*    RRR manipulator
+# #*---------- ----------
+# jt1 = hXform(a1, 0, 0, th1)
+# jt2 = hXform(a2, 0, 0, th2)
+# jt3 = hXform(a3, 0, 0, th3)
+# T = multi_dot([jt1, jt2, jt3]).round(3)
+# # pprint(T)
+
+
 
 #*---------- ----------
-#*    RRR manipulator
+#*    RR manipulator
 #*---------- ----------
-jt1 = hXform(a1, 0, 0, th1)
-jt2 = hXform(a2, 0, 0, th2)
-jt3 = hXform(a3, 0, 0, th3)
-T = multi_dot([jt1, jt2, jt3]).round(3)
+l1, l2 = symbols('l1, l2')
+jt1 = hXformSym(l1, 0, 0, th1)
+jt2 = hXformSym(l2, 0, 0, th2)
+T = jt1*jt2
+pprint(simp(T))
+
+# #*---------- ----------
+# #*    SSRMS (forward K)
+# #*---------- ----------
+# #* th1=th6=pi/2, th2=th3=th4=-pi/2, th5=-pi, th7=0
+# la=10
+# lb=12
+# lc=14
+# ld=50
+# le=50
+# lf=18
+# lg=16
+# lh=13
+
+# # #* cofiguration 1
+# # th1 = np.pi/2
+# # th2 = -np.pi/2
+# # th3 = -np.pi/2
+# # th4 = -np.pi/2
+# # th5 = -np.pi
+# # th6 = np.pi/2
+# # th7 = 0
+
+# #* zero position
+# th1 = 0
+# th2 = th3 = th4 = th5 = th6 = th7 =0 
+# #* X: ld, le -lc 
+# #* Y: lb, lf
+# #* Z: la-lc-lf-lh    
+
+# jt1 = hXform(0, -np.pi/2, la, th1)  #* la
+# jt2 = hXform(0, -np.pi/2, lb, th3)  #* lb
+# jt3 = hXform(ld, 0, lc, th2)        #* lc, ld
+# jt4 = hXform(le, 0, 0, th4)         #* le
+# jt5 = hXform(0, np.pi/2, lf, th5)   #* lf
+# jt6 = hXform(0, -np.pi/2, lg, th6)  #* lg
+# jt7 = hXform(0, 0, lh, th7)         #* lh
+# T = multi_dot([jt1, jt2, jt3, jt4, jt5, jt6, jt7]).round(3)
 # pprint(T)
 
 
-#*---------- ----------
-#*    SSRMS (forward K)
-#*---------- ----------
-#* th1=th6=pi/2, th2=th3=th4=-pi/2, th5=-pi, th7=0
-la=10
-lb=12
-lc=14
-ld=50
-le=50
-lf=18
-lg=16
-lh=13
+# lA, lB, lC, lD = symbols('l_a, l_b, l_c, l_d')
+# lE, lF, lG, lH = symbols('l_e, l_f, l_g, l_h')
 
-# #* cofiguration 1
-# th1 = np.pi/2
-# th2 = -np.pi/2
-# th3 = -np.pi/2
-# th4 = -np.pi/2
-# th5 = -np.pi
-# th6 = np.pi/2
-# th7 = 0
-
-#* zero position
-th1 = 0
-th2 = th3 = th4 = th5 = th6 = th7 =0 
-#* X: ld, le -lc 
-#* Y: lb, lf
-#* Z: la-lc-lf-lh    
-
-jt1 = hXform(0, -np.pi/2, la, th1)  #* la
-jt2 = hXform(0, -np.pi/2, lb, th3)  #* lb
-jt3 = hXform(ld, 0, lc, th2)        #* lc, ld
-jt4 = hXform(le, 0, 0, th4)         #* le
-jt5 = hXform(0, np.pi/2, lf, th5)   #* lf
-jt6 = hXform(0, -np.pi/2, lg, th6)  #* lg
-jt7 = hXform(0, 0, lh, th7)         #* lh
-T = multi_dot([jt1, jt2, jt3, jt4, jt5, jt6, jt7]).round(3)
-pprint(T)
-
-
-lA, lB, lC, lD = symbols('l_a, l_b, l_c, l_d')
-lE, lF, lG, lH = symbols('l_e, l_f, l_g, l_h')
-
-jt1 = hXformSym(0, -np.pi/2, lA, th1)  #* la
-jt2 = hXformSym(0, -np.pi/2, lB, th3)  #* lb
-jt3 = hXformSym(lD, 0, lC, th2)        #* lc, ld
-jt4 = hXformSym(lE, 0, 0, th4)         #* le
-jt5 = hXformSym(0, np.pi/2, lF, th5)   #* lf
-jt6 = hXformSym(0, -np.pi/2, lG, th6)  #* lg
-jt7 = hXformSym(0, 0, lH, th7)         #* lh
-T = jt1*jt2*jt3*jt4*jt5*jt6*jt7
-#T = T.evalf(2)
-pprint(nsimp(T, tolerance=1e-10, rational=True))
-
-
-
+# jt1 = hXformSym(0, -np.pi/2, lA, th1)  #* la
+# jt2 = hXformSym(0, -np.pi/2, lB, th3)  #* lb
+# jt3 = hXformSym(lD, 0, lC, th2)        #* lc, ld
+# jt4 = hXformSym(lE, 0, 0, th4)         #* le
+# jt5 = hXformSym(0, np.pi/2, lF, th5)   #* lf
+# jt6 = hXformSym(0, -np.pi/2, lG, th6)  #* lg
+# jt7 = hXformSym(0, 0, lH, th7)         #* lh
+# T = jt1*jt2*jt3*jt4*jt5*jt6*jt7
+# #T = T.evalf(2)
+# pprint(nsimp(T, tolerance=1e-10, rational=True))
 
 
 
