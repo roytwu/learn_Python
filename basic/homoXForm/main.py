@@ -1,6 +1,6 @@
 """
 Author:      Roy Wu
-Description: Symbolic computations for rotation matrices
+Description: Symbolic computations for homogeneous transformation
 History:     xx/xx/2020 - intial version
              02/11/2021 - revisit
 """
