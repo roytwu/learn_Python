@@ -41,10 +41,10 @@ d6 =10
 #* zero position
 th1=th2=d3=th4=th5=th6=0
 
-#* test case 1
-th2 = -np.pi/2
-th5 = np.pi/2
-d3=7
+# #* test case 1
+# th2 = -np.pi/2
+# th5 = np.pi/2
+# d3=7
 
 
 #*---------- ----------
