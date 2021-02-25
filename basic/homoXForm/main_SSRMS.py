@@ -29,9 +29,16 @@ lb=12
 lc=14
 ld=50
 le=50
-lf=18
-lg=16
-lh=13
+lf=16
+lg=18
+lh=20
+
+#* zero position
+th1 = 0
+th2 = th3 = th4 = th5 = th6 = th7 =0 
+#* X: ld, le -lc 
+#* Y: lb, lf
+#* Z: la-lc-lf-lh    
 
 # #* cofiguration 1
 # th1 = np.pi/2
@@ -42,12 +49,6 @@ lh=13
 # th6 = np.pi/2
 # th7 = 0
 
-#* zero position
-th1 = 0
-th2 = th3 = th4 = th5 = th6 = th7 =0 
-#* X: ld, le -lc 
-#* Y: lb, lf
-#* Z: la-lc-lf-lh    
 
 jt1 = hXform(0, -np.pi/2, la, th1)  #* la
 jt2 = hXform(0, -np.pi/2, lb, th3)  #* lb
