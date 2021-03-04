@@ -42,10 +42,15 @@ O_dotd = O_d.diff(t)
 # pprint(simp(O_dotd))
 
 
-O_v = -dotRz*(Rz.T)*O_d+O_dotd
+O_vs = -dotRz*(Rz.T)*O_d+O_dotd
 O_omg = veeSym(dotRz*(Rz.T))
-pprint(simp(O_v))
+pprint(simp(O_vs))
 pprint(simp(O_omg))
+
+
+O_p = Matrix([ [0], [l1+l2], [0]]) 
+O_v = dotRz*(Rz.T)*O_p+O_vs
+pprint(simp(O_v))
 
 
 
