@@ -4,7 +4,6 @@ Description: planar polar manipulator
 History:     xx/xx/2020 - intial version
              02/11/2021 - revisit, adding more comments 
 """
-
 import numpy as np
 import sympy as sym
 from numpy.linalg   import multi_dot
@@ -26,16 +25,15 @@ a2, alpha2, d2, th2 = symbols('a_2, alpha_2, d_2, theta_2')
 a3, alpha3, d3, th3 = symbols('a_3, alpha_3, d_3, theta_3')
 
 #*---------- ----------
-#*    polar manipulator
+#*    Forward Kinematics
 #*---------- ----------
-#* forward K with DH convention
-jt1 = hXformSym(0, sym.pi/2, 0, (sym.pi)/2+th)
-jt2 = hXformSym(0, 0, r, 0)
-T = jt1*jt2
-pprint(T)
+T01 = hXformSym(0, sym.pi/2, 0, (sym.pi)/2+th)
+T12 = hXformSym(0, 0, r, 0)
+T02 = T01*T12
+pprint(T02)
 
 #* extract rotation matrix to find angular velocity
-R02 = Matrix([ T[0:3, 0:3] ]) 
+R02 = Matrix([ T02[0:3, 0:3] ]) 
 pprint(R02)
 
 R02dot = Matrix([ [cos(th)*thDot, 0, -sin(th)*thDot], [-sin(th)*thDot, 0, cos(th)*thDot], [0, 0, 0]])
