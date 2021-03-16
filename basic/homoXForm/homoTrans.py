@@ -82,8 +82,18 @@ def veeSym(matrix):
     output = Matrix([ [x1], [x2], [x3]])
     return output
 
+def hat(x):
+    x1 = x[0,0]
+    x2 = x[1,0]
+    x3 = x[2,0]
+    output = np.array([ [0, -x3, x2], [x3, 0, -x1], [-x2, x1, 0]])
+    return output
 
-
-    
+def vee(matrix):
+    x1 = matrix[2, 1]
+    x2 = matrix[0, 2]
+    x3 = matrix[1, 0]
+    output = np.array([ [x1], [x2], [x3]])
+    return output  
 
 
